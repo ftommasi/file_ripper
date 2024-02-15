@@ -1,0 +1,16 @@
+[package]
+name = "file_ripper"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+eframe = "0.26.0"
+egui = "0.26.0"
+grep = "0.3.1"
+grep-matcher = "0.1.7"
+grep-regex = "0.1.12"
+grep-searcher = "0.1.13"
+rfd = "0.13.0"
+ripgrep = "14.1.0"
