@@ -2,7 +2,7 @@
 
 use eframe::egui;
 use egui::*;
-use std::path;
+use std::{path, env};
 use rfd::*;
 use {
     grep_matcher::Matcher,
@@ -41,7 +41,8 @@ impl Default for FileRipper {
     fn default() -> Self {
         Self {
             name : "FileRipper".to_string(),
-            cur_path : "C:/".to_string(),
+            //TODO how can we compile time do C:\ for windows and ~ for Linux ??"
+            cur_path : String::from(env::current_dir().expect("currend dir to be valid").to_str().expect("current_dir to be a str")),
             search_term : "".to_string(),
             search_results : vec![],
         }
