@@ -126,11 +126,13 @@ impl eframe::App for FileRipper{
                              * very slowly especially the longer the search term gets*/
                             let entry_score = levenshtein_distance(self.search_term.clone(), entry.result_string.to_owned()); //@SPEED
                             entry.result_search_score = entry_score;
+                            println!("{} | {} - {}",self.search_term.clone(),entry.result_string.clone(),entry_score);
                         }
                    }
 
+                   self.search_results.sort_by(|a,b| a.result_search_score.cmp(&b.result_search_score));
                    for entry in &self.search_results{
-                       if entry.result_search_score == entry.result_string.len().try_into().unwrap(){
+                       if entry.result_search_score < entry.result_string.len().try_into().unwrap(){
                            ui.horizontal(|ui|{
                                ui.label(&entry.result_full_path);
                             });
